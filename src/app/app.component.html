@@ -1,0 +1,16 @@
+<div class="main-box">
+  <form>
+    <div class="search-bar">
+      <input placeholder="Search" class="search-field" type="text" [formControl]="searchValue" (keyup)="search()">
+    </div>
+  </form>
+  <div infinite-scroll class="scroll-height" (scrolled)="onScroll($event)" [scrollWindow]="false"
+    [infiniteScrollDistance]="infiniteScrollDistance" [infiniteScrollThrottle]="infiniteThrottle">
+    <div class="user-list" *ngFor="let user of userList; trackBy : trackByUserId">
+      {{user.login}}
+    </div>
+    <div class="spinner" *ngIf="!loading">
+      <img src="../assets/icons8-iphone-spinner.gif">
+    </div>
+  </div>
+</div>
